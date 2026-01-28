@@ -20,6 +20,18 @@ Both approaches are implemented using plain HTML, CSS, and JavaScript to clearly
 
 ---
 
+## Live Demos
+
+Native Browser Lazy Loading Demo  
+https://kashish-dev-101.github.io/Lazy-Load-Images/NativeLazyLoading.html
+
+Intersection Observer Lazy Loading Demo  
+https://kashish-dev-101.github.io/Lazy-Load-Images/intersectionobserver.html
+
+You can scroll through each page to observe when images are loaded and compare the behavior of both techniques.
+
+---
+
 ## Lazy Loading Techniques Used
 
 ### 1. Native Browser Lazy Loading
