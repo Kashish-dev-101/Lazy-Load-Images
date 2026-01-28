@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Native Lazy Loading Demo (Clear)</title>
+
+    <style>
+      :root {
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial,
+          sans-serif;
+        color: #111827;
+      }
+
+      body {
+        margin: 0;
+        background: #f9fafb;
+      }
+
+      .page {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 24px;
+      }
+
+      .card {
+        background: white;
+        border: 1px solid #e5e7eb;
+        border-radius: 14px;
+        padding: 18px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+      }
+
+      h1 {
+        margin: 0 0 10px 0;
+        font-size: 22px;
+      }
+
+      .note {
+        margin: 0;
+        line-height: 1.6;
+        color: #374151;
+      }
+
+      .list {
+        margin-top: 28px;
+        display: grid;
+        gap: 24px;
+      }
+
+      .imgWrap {
+        background: white;
+        border: 1px solid #e5e7eb;
+        border-radius: 14px;
+        padding: 14px;
+      }
+
+      .imgTitle {
+        margin: 0 0 12px 0;
+        font-size: 14px;
+        color: #374151;
+      }
+
+      img.demoImg {
+        display: block;
+        width: 800px;
+        max-width: 100%;
+        height: auto;
+        border-radius: 12px;
+        background: #f3f4f6;
+      }
+
+      .spacer {
+        height: 1400px;
+      }
+
+      code {
+        background: #f3f4f6;
+        padding: 2px 6px;
+        border-radius: 8px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <main class="page">
+      <section class="card">
+        <h1>Native lazy loading demo</h1>
+        <p class="note">
+          This demo uses browser native <code>loading="lazy"</code>.Browsers use
+          predictive heuristics rather than strict visibility checks, loading
+          images when they fall within a lookahead distance below the viewport.
+          Large vertical spacers are added to ensure most images start outside
+          this lookahead range, making the lazy loading behavior easy to
+          observe.
+        </p>
+      </section>
+
+      <section class="list" aria-label="Images">
+        <div class="imgWrap">
+          <p class="imgTitle">1. just me, being me</p>
+          <img
+            class="demoImg"
+            src="https://ik.imagekit.io/Kashish12345/Demo/Responsive%20Image/just%20me,%20being%20me._qTxOojFwr.jpg?tr=w-800"
+            alt="just me, being me"
+            loading="eager"
+            decoding="async"
+          />
+        </div>
+        <div class="spacer"></div>
+
+        <div class="imgWrap">
+          <p class="imgTitle">2. Picture taken for CouponSna</p>
+          <img
+            class="demoImg"
+            src="https://ik.imagekit.io/Kashish12345/Demo/Responsive%20Image/Picture%20taken%20for%20CouponSna..._kOX-M-Ot3.jpg?tr=w-800"
+            alt="Picture taken for CouponSna"
+            loading="eager"
+            decoding="async"
+          />
+        </div>
+        <div class="spacer"></div>
+
+        <div class="imgWrap">
+          <p class="imgTitle">3. Portrait of a brunette woman</p>
+          <img
+            class="demoImg"
+            src="https://ik.imagekit.io/Kashish12345/Demo/Responsive%20Image/Portrait%20of%20a%20brunette%20woma..._8M9jN6Yvn.jpg?tr=w-800"
+            alt="Portrait of a brunette woman"
+            loading="eager"
+            decoding="async"
+          />
+        </div>
+        <div class="spacer"></div>
+
+        <div class="imgWrap">
+          <p class="imgTitle">4. Faces in different places</p>
+          <img
+            class="demoImg"
+            src="https://ik.imagekit.io/Kashish12345/Demo/Responsive%20Image/Faces%20in%20different%20places_odzjVuKXW.jpg?tr=w-800"
+            alt="Faces in different places"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <div class="spacer"></div>
+
+        <div class="imgWrap">
+          <p class="imgTitle">5. portrait photography of man</p>
+          <img
+            class="demoImg"
+            src="https://ik.imagekit.io/Kashish12345/Demo/Responsive%20Image/portrait%20photography%20of%20man_MDQ926JLI.jpg?tr=w-800"
+            alt="portrait photography of man"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <div class="spacer"></div>
+
+        <div class="imgWrap">
+          <p class="imgTitle">6. Happy daughter</p>
+          <img
+            class="demoImg"
+            src="https://ik.imagekit.io/Kashish12345/Demo/Responsive%20Image/Happy%20daughter_uuqnhToxV.jpg?tr=w-800"
+            alt="Happy daughter"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <div class="spacer"></div>
+
+        <div class="imgWrap">
+          <p class="imgTitle">7. Smile</p>
+          <img
+            class="demoImg"
+            src="https://ik.imagekit.io/Kashish12345/Demo/Responsive%20Image/Smile_t2oV0fxJZ.jpg?tr=w-800"
+            alt="Smile"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <div class="spacer"></div>
+
+        <div class="imgWrap">
+          <p class="imgTitle">8. People laughing and talking</p>
+          <img
+            class="demoImg"
+            src="https://ik.imagekit.io/Kashish12345/Demo/Responsive%20Image/people%20laughing%20and%20talking..._af4pgiNHXQ.jpg?tr=w-800"
+            alt="People laughing and talking"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <div class="spacer"></div>
+
+        <div class="imgWrap">
+          <p class="imgTitle">9. pexels almightyshilref</p>
+          <img
+            class="demoImg"
+            src="https://ik.imagekit.io/Kashish12345/Demo/Responsive%20Image/pexels-almightyshilref-3432268__H6s3dAnI.jpg?tr=w-800"
+            alt="pexels almightyshilref"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <div class="spacer"></div>
+
+        <div class="imgWrap">
+          <p class="imgTitle">10. pexels ezekixl</p>
+          <img
+            class="demoImg"
+            src="https://ik.imagekit.io/Kashish12345/Demo/Responsive%20Image/pexels-ezekixl-6957184_3mUnbVql6.jpg?tr=w-800"
+            alt="pexels ezekixl"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <div class="spacer"></div>
+
+        <div class="imgWrap">
+          <p class="imgTitle">11. pexels pixabay</p>
+          <img
+            class="demoImg"
+            src="https://ik.imagekit.io/Kashish12345/Demo/Responsive%20Image/pexels-pixabay-532303_-IGCtCUDv.jpg?tr=w-800"
+            alt="pexels pixabay"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <div class="spacer"></div>
+
+        <div class="imgWrap">
+          <p class="imgTitle">12. pexels shkrabaanthony</p>
+          <img
+            class="demoImg"
+            src="https://ik.imagekit.io/Kashish12345/Demo/Responsive%20Image/pexels-shkrabaanthony-5475777_SQsDUttLO.jpg?tr=w-800"
+            alt="pexels shkrabaanthony"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
