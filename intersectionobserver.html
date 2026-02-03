@@ -10,23 +10,31 @@
   <body>
     <main class="page">
       <section class="card">
-        <h1>Lazy loading demo using IntersectionObserver</h1>
+        <h1>Lazy loading with IntersectionObserver</h1>
 
         <p class="note">
-          This page demonstrates lazy loading using the IntersectionObserver
-          API. Images are not requested immediately. Instead, JavaScript loads
-          an image only when it is about to enter the viewport. This approach
-          gives predictable, browser controlled behavior and works consistently
-          across modern browsers.
+          Load images only when users actually need them. The <code>IntersectionObserver</code> API
+          detects when elements enter the viewport and triggers image loading at precisely the right moment.
+        </p>
+        <p class="note">
+          <strong>Why use this?</strong> Unlike native lazy loading, IntersectionObserver gives you
+          full control over timing, thresholds, and loading behavior—ideal for custom implementations.
+        </p>
+        <p class="note">
+          <a href="https://caniuse.com/?search=IntersectionObserver" target="_blank" rel="noopener">Check browser support →</a>
         </p>
       </section>
 
       <section class="card cardSecondary">
-        <h2>How this will work</h2>
+        <h2>How it works</h2>
         <p class="note">
-          The HTML renders image placeholders. The real URL is stored in a data
-          attribute. When an image wrapper intersects the viewport, JavaScript
-          swaps the placeholder with the real ImageKit URL.
+          <strong>1.</strong> Images start as lightweight placeholders with the real URL stored in <code>data-src</code>.
+        </p>
+        <p class="note">
+          <strong>2.</strong> The observer watches each placeholder and fires when it approaches the viewport.
+        </p>
+        <p class="note">
+          <strong>3.</strong> On intersection, JavaScript swaps <code>data-src</code> → <code>src</code>, triggering the actual image load.
         </p>
       </section>
 
