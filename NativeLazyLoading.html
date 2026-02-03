@@ -79,6 +79,20 @@
         padding: 2px 6px;
         border-radius: 8px;
       }
+
+      .note + .note {
+        margin-top: 12px;
+      }
+
+      .note a {
+        color: #2563eb;
+        text-decoration: none;
+        font-weight: 500;
+      }
+
+      .note a:hover {
+        text-decoration: underline;
+      }
     </style>
   </head>
 
@@ -87,12 +101,16 @@
       <section class="card">
         <h1>Native lazy loading demo</h1>
         <p class="note">
-          This demo uses browser native <code>loading="lazy"</code>.Browsers use
-          predictive heuristics rather than strict visibility checks, loading
-          images when they fall within a lookahead distance below the viewport.
-          Large vertical spacers are added to ensure most images start outside
-          this lookahead range, making the lazy loading behavior easy to
-          observe.
+          This demo showcases the browser-native <code>loading="lazy"</code> attribute for images.
+          Instead of loading all images upfront, the browser defers off-screen images until
+          the user scrolls near them—improving initial page load performance and reducing bandwidth.
+        </p>
+        <p class="note">
+          <strong>How to observe:</strong> Open DevTools → Network tab, then scroll down slowly.
+          You'll see images load progressively as they approach the viewport.
+        </p>
+        <p class="note">
+          <a href="https://caniuse.com/?search=loading%3Dlazy" target="_blank" rel="noopener">Check browser support →</a>
         </p>
       </section>
 

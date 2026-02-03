@@ -42,6 +42,20 @@ h2 {
   color: #374151;
 }
 
+.note + .note {
+  margin-top: 12px;
+}
+
+.note a {
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.note a:hover {
+  text-decoration: underline;
+}
+
 .grid {
   margin-top: 24px;
   display: grid;

@@ -1,124 +1,141 @@
 # Lazy Load Images
 
-This project demonstrates multiple image lazy loading techniques using modern browser features.  
-It focuses on improving page performance and reducing unnecessary network requests by loading images only when they are needed.
+A practical demonstration of image lazy loading techniques using modern browser APIs.
 
-The implementation compares native browser based lazy loading with Intersection Observer based lazy loading.
-
----
-
-## Project Overview
-
-Image lazy loading is a critical frontend performance optimization technique, especially for image heavy pages.
-
-In this project, two approaches are implemented and compared:
-
-1. Native browser lazy loading using the loading attribute
-2. Lazy loading using the Intersection Observer API
-
-Both approaches are implemented using plain HTML, CSS, and JavaScript to clearly show how they work under the hood.
-
----
+This project compares **native browser lazy loading** with **Intersection Observer-based lazy loading**, helping you understand when and how to use each approach for optimal performance.
 
 ## Live Demos
 
-Native Browser Lazy Loading Demo  
-https://kashish-dev-101.github.io/Lazy-Load-Images/NativeLazyLoading.html
+| Demo | Description |
+|------|-------------|
+| [Native Lazy Loading](https://kashish-dev-101.github.io/Lazy-Load-Images/NativeLazyLoading.html) | Uses the `loading="lazy"` attribute |
+| [Intersection Observer](https://kashish-dev-101.github.io/Lazy-Load-Images/intersectionobserver.html) | JavaScript-controlled lazy loading |
 
-Intersection Observer Lazy Loading Demo  
-https://kashish-dev-101.github.io/Lazy-Load-Images/intersectionobserver.html
-
-You can scroll through each page to observe when images are loaded and compare the behavior of both techniques.
+Open DevTools → Network tab, then scroll to observe images loading on demand.
 
 ---
 
-## Lazy Loading Techniques Used
+## Why Lazy Loading?
+
+Lazy loading defers off-screen images until users scroll near them. This improves:
+
+- **Initial page load** — fewer requests, faster [LCP](https://web.dev/articles/lcp)
+- **Bandwidth usage** — images that are never viewed are never downloaded
+- **User experience** — above-the-fold content loads faster
+
+---
+
+## Techniques Compared
 
 ### 1. Native Browser Lazy Loading
 
-Modern browsers support lazy loading out of the box using the `loading="lazy"` attribute on image tags.
+The simplest approach — add `loading="lazy"` to your `<img>` tags.
 
-How it works:
-The browser automatically defers loading images until they are close to entering the viewport.
+```html
+<img src="image.jpg" loading="lazy" alt="Description" />
+```
 
-Benefits:
-Simple to implement  
-No JavaScript required  
-Good baseline performance improvement  
+| Pros | Cons |
+|------|------|
+| Zero JavaScript required | Less control over timing |
+| Built-in browser optimization | Browser-dependent thresholds |
+| Works out of the box | No custom loading states |
 
-Limitations:
-Less control over loading behavior  
-Browser dependent behavior  
+**Browser support:** [caniuse.com/loading-lazy-attr](https://caniuse.com/loading-lazy-attr)
 
-Reference documentation:
-https://developer.mozilla.org/en-US/docs/Web/Performance/Lazy_loading
-
----
-
-### 2. Intersection Observer Based Lazy Loading
-
-This approach uses the Intersection Observer API to detect when an image enters the viewport and then loads it dynamically.
-
-How it works:
-Images are initially loaded with placeholder or data attributes  
-The Intersection Observer watches for visibility changes  
-When the image intersects the viewport, the actual source is assigned  
-
-Benefits:
-Fine grained control over when images load  
-Better customization options  
-Works well with animations and advanced UX  
-
-Reference documentation:
-https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API
+**Documentation:** [MDN — Lazy loading](https://developer.mozilla.org/en-US/docs/Web/Performance/Lazy_loading)
 
 ---
 
-## Why Intersection Observer
+### 2. Intersection Observer API
 
-Intersection Observer provides better control compared to native lazy loading.
+For full control, use JavaScript to detect when elements enter the viewport.
 
-It allows:
-Custom thresholds  
-Preloading before visibility  
-Fallback handling  
-Analytics and logging hooks  
+```html
+<img data-src="image.jpg" alt="Description" />
+```
 
-This makes it ideal for complex layouts and performance critical applications.
+```javascript
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const img = entry.target;
+      img.src = img.dataset.src;
+      observer.unobserve(img);
+    }
+  });
+});
+
+document.querySelectorAll('img[data-src]').forEach(img => observer.observe(img));
+```
+
+| Pros | Cons |
+|------|------|
+| Custom thresholds and margins | Requires JavaScript |
+| Loading states and animations | More implementation effort |
+| Analytics and logging hooks | Must handle fallbacks |
+
+**Browser support:** [caniuse.com/intersectionobserver](https://caniuse.com/intersectionobserver)
+
+**Documentation:** [MDN — Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API)
 
 ---
 
-## How to Run the Project
+## When to Use Each
 
-1. Clone the repository
-2. Open the HTML files directly in the browser
-3. Scroll the page to observe lazy loading behavior
+| Use Case | Recommended Approach |
+|----------|---------------------|
+| Simple image galleries | Native `loading="lazy"` |
+| Custom placeholder/skeleton UI | Intersection Observer |
+| Blur-up or fade-in effects | Intersection Observer |
+| Maximum browser compatibility | Native with IO fallback |
+| Analytics on image views | Intersection Observer |
 
-No build tools or dependencies are required.
+---
+
+## Getting Started
+
+```bash
+# Clone the repository
+git clone https://github.com/kashish-dev-101/Lazy-Load-Images.git
+
+# Open in browser
+open NativeLazyLoading.html
+open intersectionobserver.html
+```
+
+No build tools or dependencies required.
+
+---
+
+## Project Structure
+
+```
+Lazy-Load-Images/
+├── NativeLazyLoading.html   # Native loading="lazy" demo
+├── intersectionobserver.html # Intersection Observer demo
+├── app.js                    # IO implementation
+├── style.css                 # Shared styles
+└── README.md
+```
 
 ---
 
 ## Learning Outcomes
 
-By working through this project, you will understand:
+After exploring this project, you'll understand:
 
-1. How native browser lazy loading works
+1. How `loading="lazy"` works and its browser behavior
 2. How Intersection Observer detects element visibility
-3. Performance differences between the two approaches
-4. When to use each technique in real world projects
+3. Trade-offs between simplicity and control
+4. Best practices for production implementations
 
 ---
 
-## References
+## Further Reading
 
-MDN Web Docs  
-Native Lazy Loading  
-https://developer.mozilla.org/en-US/docs/Web/Performance/Lazy_loading
-
-Intersection Observer API  
-https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API
-
----
-
-
-
+- [web.dev — Browser-level image lazy loading](https://web.dev/articles/browser-level-image-lazy-loading)
+- [web.dev — Lazy loading images](https://web.dev/articles/lazy-loading-images)
+- [MDN — Lazy loading](https://developer.mozilla.org/en-US/docs/Web/Performance/Lazy_loading)
+- [MDN — Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API)
+- [ImageKit — Lazy loading images guide](https://imagekit.io/blog/lazy-loading-images-complete-guide/)
