@@ -1,45 +1,120 @@
-:root {
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  color: #111827;
-}
-
-body {
+/* ─── Reset ─── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
   margin: 0;
-  background: #f9fafb;
+  padding: 0;
 }
 
+/* ─── Base ─── */
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: #f0f4fa;
+  margin: 0;
+  padding: 24px;
+  color: #1f2937;
+}
+
+a {
+  color: #2563eb;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #1d4ed8;
+  text-decoration: underline;
+}
+
+/* ─── Navbar ─── */
+.navbar {
+  max-width: 1100px;
+  margin: 0 auto 16px;
+  background: #1b2a4a;
+  border-radius: 12px;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.navbar a {
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #cbd5e1;
+  background: transparent;
+  border: none;
+  transition: all 0.2s;
+  text-decoration: none;
+}
+
+.navbar a:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+  text-decoration: none;
+}
+
+.navbar a.active {
+  color: #fff;
+  background: #2563eb;
+}
+
+/* ─── Page Container ─── */
 .page {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 24px;
 }
 
+/* ─── Card ─── */
 .card {
   background: #ffffff;
-  border: 1px solid #e5e7eb;
-  border-radius: 14px;
-  padding: 18px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 24px rgba(37, 99, 235, 0.08);
 }
 
-.cardSecondary {
+.card + .card {
   margin-top: 16px;
 }
 
+/* ─── Typography ─── */
 h1 {
-  margin: 0 0 10px 0;
-  font-size: 22px;
+  font-size: 28px;
+  margin: 0 0 12px;
+  line-height: 1.3;
+  color: #1b2a4a;
 }
 
 h2 {
-  margin: 0 0 10px 0;
-  font-size: 16px;
+  font-size: 18px;
+  margin: 0 0 12px;
+  color: #1b2a4a;
 }
 
+p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #4b5563;
+  margin: 0 0 12px;
+}
+
+code {
+  display: inline;
+  background: #eef2ff;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 0.95em;
+  color: #1e40af;
+}
+
+/* ─── Note Text ─── */
 .note {
   margin: 0;
   line-height: 1.6;
-  color: #374151;
+  color: #4b5563;
 }
 
 .note + .note {
@@ -48,14 +123,27 @@ h2 {
 
 .note a {
   color: #2563eb;
-  text-decoration: none;
   font-weight: 500;
 }
 
 .note a:hover {
-  text-decoration: underline;
+  color: #1d4ed8;
 }
 
+/* ─── Description Box ─── */
+.description {
+  margin-top: 16px;
+  padding: 20px;
+  background: #f0f4fa;
+  border-radius: 12px;
+  border-left: 4px solid #2563eb;
+}
+
+.description p:last-child {
+  margin-bottom: 0;
+}
+
+/* ─── Image Grid ─── */
 .grid {
   margin-top: 24px;
   display: grid;
@@ -63,54 +151,81 @@ h2 {
   gap: 24px;
 }
 
+/* ─── Image List ─── */
+.list {
+  margin-top: 24px;
+  display: grid;
+  gap: 24px;
+}
+
+/* ─── Image Wrap ─── */
 .imgWrap {
   background: #ffffff;
   border: 1px solid #e5e7eb;
   border-radius: 14px;
   padding: 14px;
+  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.06);
+  transition: box-shadow 0.2s;
+}
+
+.imgWrap:hover {
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.12);
 }
 
 .imgTitle {
-  margin: 0 0 12px 0;
+  margin: 0 0 12px;
   font-size: 14px;
-  color: #374151;
+  color: #1b2a4a;
+  font-weight: 600;
 }
 
-.imgBox {
-  border-radius: 12px;
-  overflow: hidden;
-  background: #f3f4f6;
-}
-
+/* ─── Demo Images ─── */
 img.demoImg {
   display: block;
   width: 800px;
   max-width: 100%;
   height: auto;
   border-radius: 12px;
-  background: #f3f4f6;
-}
-
-.skeleton {
-  width: 800px;
-  max-width: 100%;
-  aspect-ratio: 16 / 10;
-  border-radius: 12px;
-  background: #e5e7eb;
-}
-
-code {
-  background: #f3f4f6;
-  padding: 2px 6px;
-  border-radius: 8px;
+  background: #e9eef5;
+  transition: filter 250ms ease, transform 250ms ease;
 }
 
 img.demoImg.isBlur {
   filter: blur(10px);
   transform: scale(1.02);
-  transition: filter 250ms ease, transform 250ms ease;
 }
 
-img.demoImg {
-  transition: filter 250ms ease, transform 250ms ease;
+/* ─── Skeleton Placeholder ─── */
+.skeleton {
+  width: 800px;
+  max-width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: 12px;
+  background: #e9eef5;
+}
+
+/* ─── Spacer (NativeLazyLoading) ─── */
+.spacer {
+  height: 1400px;
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 600px) {
+  body {
+    padding: 16px;
+  }
+
+  .card {
+    padding: 18px;
+    border-radius: 12px;
+  }
+
+  h1 {
+    font-size: 22px;
+  }
+
+  p,
+  .note {
+    font-size: 15px;
+  }
 }
