@@ -121,17 +121,6 @@ Lazy-Load-Images/
 
 ---
 
-## Learning Outcomes
-
-After exploring this project, you'll understand:
-
-1. How `loading="lazy"` works and its browser behavior
-2. How Intersection Observer detects element visibility
-3. Trade-offs between simplicity and control
-4. Best practices for production implementations
-
----
-
 ## Further Reading
 
 - [web.dev — Browser-level image lazy loading](https://web.dev/articles/browser-level-image-lazy-loading)
