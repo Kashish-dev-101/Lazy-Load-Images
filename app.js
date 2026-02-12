@@ -93,7 +93,11 @@ const observer = new IntersectionObserver(
       observer.unobserve(img); // stop watching this image (load only once)
     });
   },
-  { root: null, rootMargin: "0px 0px -30% 0px", threshold: 0.1 } // start loading 300px before it appears
+  {
+    root: null, // observe against the browser viewport
+    rootMargin: "0px 0px -30% 0px", // shrink detection zone by 30% from bottom — image must scroll 30% into viewport before triggering
+    threshold: 0.1, // fire callback when at least 10% of the image is inside the detection zone
+  }
 );
 
 // 3) Start watching all images
